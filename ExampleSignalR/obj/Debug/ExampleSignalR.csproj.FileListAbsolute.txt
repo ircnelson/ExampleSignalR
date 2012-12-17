@@ -26,6 +26,5 @@ D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\System.Web.Razor.xml
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\System.Web.WebPages.xml
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\System.Web.WebPages.Deployment.xml
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\System.Web.WebPages.Razor.xml
-D:\Workspace\Git\ExampleSignalR\ExampleSignalR\obj\Debug\ExampleSignalR.csprojResolveAssemblyReference.cache
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\obj\Debug\ExampleSignalR.dll
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\obj\Debug\ExampleSignalR.pdb
