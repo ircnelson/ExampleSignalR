@@ -6,11 +6,9 @@ using Microsoft.AspNet.SignalR.Hubs;
 
 namespace ExampleSignalR.SignalR
 {
+    [HubName("highchartsHub")]
     public class HighchartsHub : Hub
     {
-        public void Hello()
-        {
-            Clients.All.hello();
-        }
+
     }
 }

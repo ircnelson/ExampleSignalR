@@ -8,9 +8,11 @@ namespace ExampleSignalR
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/json").Include(
+                    "~/Scripts/json2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
-                "~/Scripts/jquery.signalR-1.0.0-rc1.js"));
+                    "~/Scripts/jquery.signalR-1.0.0-rc1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));

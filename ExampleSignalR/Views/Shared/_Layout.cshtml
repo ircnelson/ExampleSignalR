@@ -31,11 +31,11 @@
     <div class="container">
         @RenderBody()
     </div>
-
+    
+    @Scripts.Render("~/bundles/json")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/signalr")
-    <script src="~/signalr/hubs" type="text/javascript"></script>
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

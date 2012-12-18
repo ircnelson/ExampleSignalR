@@ -28,7 +28,6 @@ D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\System.Web.WebPages.Deploymen
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\System.Web.WebPages.Razor.xml
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\obj\Debug\ExampleSignalR.dll
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\obj\Debug\ExampleSignalR.pdb
-D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\Highcharts.Mvc.dll
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\Microsoft.AspNet.SignalR.Core.dll
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\Microsoft.AspNet.SignalR.Owin.dll
 D:\Workspace\Git\ExampleSignalR\ExampleSignalR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
