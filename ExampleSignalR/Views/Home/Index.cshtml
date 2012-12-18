@@ -3,4 +3,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts
+{    
+    <script type="text/javascript">
+        $(function () {
+            var hub = $.connection.highchartsHub;
+
+            hub.client.hello = function() {
+                $("#helloResult").append("Hello!");
+            };
+
+            $.connection.hub.start().done(function() {
+                $("#testehub").click(function() {
+                    hub.server.hello();
+                });
+                
+            });
+        });
+    </script>
+}
+
 <h2>Index</h2>
+
+<button id="testehub">Hello SignalR!</button>
+
+<div id="helloResult"></div>
