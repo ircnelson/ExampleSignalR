@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GenesisModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="GenesisModelStoreContainer">
+          <EntitySet Name="tbPropostaComercial" EntityType="GenesisModel.Store.tbPropostaComercial" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tbPropostaComercial">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDUndSrv" Type="bigint" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="50" />
+          <Property Name="DataEmissao" Type="datetime" />
+          <Property Name="IDContratante" Type="bigint" Nullable="false" />
+          <Property Name="IDCategoria" Type="bigint" Nullable="false" />
+          <Property Name="IDTabelaPreco" Type="smallint" Nullable="false" />
+          <Property Name="ValorProposta" Type="numeric" Nullable="false" Scale="4" />
+          <Property Name="IDAgenteNegocios" Type="bigint" />
+          <Property Name="DataHoraAtualizacaoPreco" Type="datetime" />
+          <Property Name="IDArea" Type="bigint" />
+          <Property Name="IDAbrangencia" Type="bigint" />
+          <Property Name="IDSituacao" Type="bigint" />
+          <Property Name="DataHoraInclusao" Type="datetime" />
+          <Property Name="IDOperadorInclusao" Type="bigint" />
+          <Property Name="DataHoraUltAlteracao" Type="datetime" />
+          <Property Name="IDOperadorUltAlteracao" Type="bigint" />
+          <Property Name="DataHoraAprovacao" Type="datetime" />
+          <Property Name="IDOperadorAprovacao" Type="bigint" />
+          <Property Name="DataHoraCancelamento" Type="datetime" />
+          <Property Name="IDOperadorCancelamento" Type="bigint" />
+          <Property Name="DataHoraConclusao" Type="datetime" />
+          <Property Name="IDOperadorConclusao" Type="bigint" />
+          <Property Name="DiaVencimentoParcela" Type="int" />
+          <Property Name="ValorEntrada" Type="numeric" Nullable="false" Scale="4" />
+          <Property Name="DataValidadeProposta" Type="datetime" />
+          <Property Name="DataValidadePreco" Type="datetime" />
+          <Property Name="ObservacoesPagamento" Type="varchar" MaxLength="200" />
+          <Property Name="ObservacoesExecucao" Type="varchar" MaxLength="200" />
+          <Property Name="ObservacoesGerais" Type="varchar" MaxLength="500" />
+          <Property Name="IDResponsavelContratante" Type="bigint" />
+          <Property Name="IDTipoVinculo" Type="smallint" />
+          <Property Name="IDContratoOriginal" Type="bigint" />
+          <Property Name="PercentualRenovacao" Type="numeric" Scale="2" />
+          <Property Name="IDMotivoRejeicao" Type="int" />
+          <Property Name="ObservacaoRejeicao" Type="varchar" MaxLength="200" />
+          <Property Name="DataHoraRejeicao" Type="datetime" />
+          <Property Name="IDOperadorRejeicao" Type="bigint" />
+          <Property Name="IDUnidadeExecucao" Type="bigint" />
+          <Property Name="IDAgenda" Type="bigint" />
+          <Property Name="TipoExecucao" Type="smallint" />
+          <Property Name="TipoEnderecoExecucao" Type="smallint" />
+          <Property Name="EnderecoExecucao" Type="varchar" MaxLength="2000" />
+          <Property Name="IDRegionalAdministrador" Type="bigint" />
+          <Property Name="AdministracaoPropria" Type="bit" Nullable="false" />
+          <Property Name="IDTipoDocumentoCobranca" Type="bigint" />
+          <Property Name="IDTipoDocumentoFaturamento" Type="bigint" />
+          <Property Name="IDSistemaOrigem" Type="smallint" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GenesisModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GenesisEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbPropostaComercial" EntityType="GenesisModel.tbPropostaComercial" />
+        </EntityContainer>
+        <EntityType Name="tbPropostaComercial">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUndSrv" Type="Int64" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DataEmissao" Type="DateTime" Precision="3" />
+          <Property Name="IDContratante" Type="Int64" Nullable="false" />
+          <Property Name="IDCategoria" Type="Int64" Nullable="false" />
+          <Property Name="IDTabelaPreco" Type="Int16" Nullable="false" />
+          <Property Name="ValorProposta" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="IDAgenteNegocios" Type="Int64" />
+          <Property Name="DataHoraAtualizacaoPreco" Type="DateTime" Precision="3" />
+          <Property Name="IDArea" Type="Int64" />
+          <Property Name="IDAbrangencia" Type="Int64" />
+          <Property Name="IDSituacao" Type="Int64" />
+          <Property Name="DataHoraInclusao" Type="DateTime" Precision="3" />
+          <Property Name="IDOperadorInclusao" Type="Int64" />
+          <Property Name="DataHoraUltAlteracao" Type="DateTime" Precision="3" />
+          <Property Name="IDOperadorUltAlteracao" Type="Int64" />
+          <Property Name="DataHoraAprovacao" Type="DateTime" Precision="3" />
+          <Property Name="IDOperadorAprovacao" Type="Int64" />
+          <Property Name="DataHoraCancelamento" Type="DateTime" Precision="3" />
+          <Property Name="IDOperadorCancelamento" Type="Int64" />
+          <Property Name="DataHoraConclusao" Type="DateTime" Precision="3" />
+          <Property Name="IDOperadorConclusao" Type="Int64" />
+          <Property Name="DiaVencimentoParcela" Type="Int32" />
+          <Property Name="ValorEntrada" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="DataValidadeProposta" Type="DateTime" Precision="3" />
+          <Property Name="DataValidadePreco" Type="DateTime" Precision="3" />
+          <Property Name="ObservacoesPagamento" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ObservacoesExecucao" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ObservacoesGerais" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="IDResponsavelContratante" Type="Int64" />
+          <Property Name="IDTipoVinculo" Type="Int16" />
+          <Property Name="IDContratoOriginal" Type="Int64" />
+          <Property Name="PercentualRenovacao" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IDMotivoRejeicao" Type="Int32" />
+          <Property Name="ObservacaoRejeicao" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DataHoraRejeicao" Type="DateTime" Precision="3" />
+          <Property Name="IDOperadorRejeicao" Type="Int64" />
+          <Property Name="IDUnidadeExecucao" Type="Int64" />
+          <Property Name="IDAgenda" Type="Int64" />
+          <Property Name="TipoExecucao" Type="Int16" />
+          <Property Name="TipoEnderecoExecucao" Type="Int16" />
+          <Property Name="EnderecoExecucao" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="IDRegionalAdministrador" Type="Int64" />
+          <Property Name="AdministracaoPropria" Type="Boolean" Nullable="false" />
+          <Property Name="IDTipoDocumentoCobranca" Type="Int64" />
+          <Property Name="IDTipoDocumentoFaturamento" Type="Int64" />
+          <Property Name="IDSistemaOrigem" Type="Int16" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GenesisModelStoreContainer" CdmEntityContainer="GenesisEntities">
+          <EntitySetMapping Name="tbPropostaComercial">
+            <EntityTypeMapping TypeName="GenesisModel.tbPropostaComercial">
+              <MappingFragment StoreEntitySet="tbPropostaComercial">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDUndSrv" ColumnName="IDUndSrv" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="DataEmissao" ColumnName="DataEmissao" />
+                <ScalarProperty Name="IDContratante" ColumnName="IDContratante" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="IDTabelaPreco" ColumnName="IDTabelaPreco" />
+                <ScalarProperty Name="ValorProposta" ColumnName="ValorProposta" />
+                <ScalarProperty Name="IDAgenteNegocios" ColumnName="IDAgenteNegocios" />
+                <ScalarProperty Name="DataHoraAtualizacaoPreco" ColumnName="DataHoraAtualizacaoPreco" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="IDAbrangencia" ColumnName="IDAbrangencia" />
+                <ScalarProperty Name="IDSituacao" ColumnName="IDSituacao" />
+                <ScalarProperty Name="DataHoraInclusao" ColumnName="DataHoraInclusao" />
+                <ScalarProperty Name="IDOperadorInclusao" ColumnName="IDOperadorInclusao" />
+                <ScalarProperty Name="DataHoraUltAlteracao" ColumnName="DataHoraUltAlteracao" />
+                <ScalarProperty Name="IDOperadorUltAlteracao" ColumnName="IDOperadorUltAlteracao" />
+                <ScalarProperty Name="DataHoraAprovacao" ColumnName="DataHoraAprovacao" />
+                <ScalarProperty Name="IDOperadorAprovacao" ColumnName="IDOperadorAprovacao" />
+                <ScalarProperty Name="DataHoraCancelamento" ColumnName="DataHoraCancelamento" />
+                <ScalarProperty Name="IDOperadorCancelamento" ColumnName="IDOperadorCancelamento" />
+                <ScalarProperty Name="DataHoraConclusao" ColumnName="DataHoraConclusao" />
+                <ScalarProperty Name="IDOperadorConclusao" ColumnName="IDOperadorConclusao" />
+                <ScalarProperty Name="DiaVencimentoParcela" ColumnName="DiaVencimentoParcela" />
+                <ScalarProperty Name="ValorEntrada" ColumnName="ValorEntrada" />
+                <ScalarProperty Name="DataValidadeProposta" ColumnName="DataValidadeProposta" />
+                <ScalarProperty Name="DataValidadePreco" ColumnName="DataValidadePreco" />
+                <ScalarProperty Name="ObservacoesPagamento" ColumnName="ObservacoesPagamento" />
+                <ScalarProperty Name="ObservacoesExecucao" ColumnName="ObservacoesExecucao" />
+                <ScalarProperty Name="ObservacoesGerais" ColumnName="ObservacoesGerais" />
+                <ScalarProperty Name="IDResponsavelContratante" ColumnName="IDResponsavelContratante" />
+                <ScalarProperty Name="IDTipoVinculo" ColumnName="IDTipoVinculo" />
+                <ScalarProperty Name="IDContratoOriginal" ColumnName="IDContratoOriginal" />
+                <ScalarProperty Name="PercentualRenovacao" ColumnName="PercentualRenovacao" />
+                <ScalarProperty Name="IDMotivoRejeicao" ColumnName="IDMotivoRejeicao" />
+                <ScalarProperty Name="ObservacaoRejeicao" ColumnName="ObservacaoRejeicao" />
+                <ScalarProperty Name="DataHoraRejeicao" ColumnName="DataHoraRejeicao" />
+                <ScalarProperty Name="IDOperadorRejeicao" ColumnName="IDOperadorRejeicao" />
+                <ScalarProperty Name="IDUnidadeExecucao" ColumnName="IDUnidadeExecucao" />
+                <ScalarProperty Name="IDAgenda" ColumnName="IDAgenda" />
+                <ScalarProperty Name="TipoExecucao" ColumnName="TipoExecucao" />
+                <ScalarProperty Name="TipoEnderecoExecucao" ColumnName="TipoEnderecoExecucao" />
+                <ScalarProperty Name="EnderecoExecucao" ColumnName="EnderecoExecucao" />
+                <ScalarProperty Name="IDRegionalAdministrador" ColumnName="IDRegionalAdministrador" />
+                <ScalarProperty Name="AdministracaoPropria" ColumnName="AdministracaoPropria" />
+                <ScalarProperty Name="IDTipoDocumentoCobranca" ColumnName="IDTipoDocumentoCobranca" />
+                <ScalarProperty Name="IDTipoDocumentoFaturamento" ColumnName="IDTipoDocumentoFaturamento" />
+                <ScalarProperty Name="IDSistemaOrigem" ColumnName="IDSistemaOrigem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

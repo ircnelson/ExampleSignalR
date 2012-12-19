@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PEModelStoreContainer">
+          <EntitySet Name="Pessoa" EntityType="PEModel.Store.Pessoa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UnidServ" EntityType="PEModel.Store.UnidServ" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Pessoa_Pessoa" Association="PEModel.Store.FK_Pessoa_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Pessoa1" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_Pessoa_Titular" Association="PEModel.Store.FK_Pessoa_Pessoa_Titular">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Pessoa1" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_UnidServ" Association="PEModel.Store.FK_Pessoa_UnidServ">
+            <End Role="UnidServ" EntitySet="UnidServ" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="CDPessoa" />
+          </Key>
+          <Property Name="CDPessoa" Type="varchar" Nullable="false" MaxLength="9" />
+          <Property Name="CDUnidServ" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="DataCad" Type="datetime" Nullable="false" />
+          <Property Name="Tipo" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="NMPessoa" Type="varchar" MaxLength="100" />
+          <Property Name="NomeFant" Type="varchar" MaxLength="50" />
+          <Property Name="Endereco" Type="varchar" MaxLength="50" />
+          <Property Name="Bairro" Type="varchar" MaxLength="30" />
+          <Property Name="Cidade" Type="varchar" MaxLength="35" />
+          <Property Name="UF" Type="char" MaxLength="2" />
+          <Property Name="Cep" Type="char" MaxLength="8" />
+          <Property Name="CDNivel" Type="smallint" />
+          <Property Name="CDOperador" Type="smallint" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="DataNasc" Type="datetime" />
+          <Property Name="Cargo" Type="varchar" MaxLength="30" />
+          <Property Name="Salario" Type="numeric" Scale="2" />
+          <Property Name="CartTrab" Type="varchar" MaxLength="15" />
+          <Property Name="SerieCTPS" Type="varchar" MaxLength="15" />
+          <Property Name="UFCTPS" Type="varchar" MaxLength="2" />
+          <Property Name="CidadeNasc" Type="varchar" MaxLength="35" />
+          <Property Name="UFNasc" Type="char" MaxLength="2" />
+          <Property Name="PaisNasc" Type="varchar" MaxLength="35" />
+          <Property Name="CDGrauDep" Type="smallint" />
+          <Property Name="CDEstCivil" Type="smallint" />
+          <Property Name="CPFCNPJ" Type="varchar" MaxLength="18" />
+          <Property Name="RG" Type="varchar" MaxLength="15" />
+          <Property Name="NomePai" Type="varchar" MaxLength="100" />
+          <Property Name="NomeMae" Type="varchar" MaxLength="100" />
+          <Property Name="NomeResp" Type="varchar" MaxLength="100" />
+          <Property Name="CargoResp" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="NomeContato" Type="varchar" MaxLength="50" />
+          <Property Name="FoneRes" Type="varchar" MaxLength="15" />
+          <Property Name="FoneCel" Type="varchar" MaxLength="15" />
+          <Property Name="FoneCom" Type="varchar" MaxLength="15" />
+          <Property Name="FoneCnt" Type="varchar" MaxLength="15" />
+          <Property Name="FoneFax" Type="varchar" MaxLength="15" />
+          <Property Name="Sesi" Type="bit" />
+          <Property Name="NumRegPrf" Type="varchar" MaxLength="20" />
+          <Property Name="DataAdm" Type="datetime" />
+          <Property Name="DataDem" Type="datetime" />
+          <Property Name="TipoHor" Type="char" MaxLength="1" />
+          <Property Name="CDTitular" Type="varchar" MaxLength="9" />
+          <Property Name="Situacao" Type="char" MaxLength="1" />
+          <Property Name="CDEmpresa" Type="varchar" MaxLength="9" />
+          <Property Name="InscrEst" Type="varchar" MaxLength="20" />
+          <Property Name="InscrMunic" Type="varchar" MaxLength="20" />
+          <Property Name="CaixaPostal" Type="varchar" MaxLength="6" />
+          <Property Name="CDCnae" Type="varchar" MaxLength="7" />
+          <Property Name="CDCategoria" Type="smallint" />
+          <Property Name="TpRecolhim" Type="char" MaxLength="1" />
+          <Property Name="NumFunc" Type="smallint" />
+          <Property Name="CEI" Type="varchar" MaxLength="12" />
+          <Property Name="CDGrauEsc" Type="smallint" />
+          <Property Name="CursoFormacao" Type="varchar" MaxLength="30" />
+          <Property Name="Obs" Type="varchar" MaxLength="1000" />
+          <Property Name="Ativo" Type="bit" />
+          <Property Name="EhCliente" Type="bit" />
+          <Property Name="EhEmpresa" Type="bit" />
+          <Property Name="EhFornec" Type="bit" />
+          <Property Name="EhParceiro" Type="bit" />
+          <Property Name="EhColaborador" Type="bit" />
+          <Property Name="CDSitEspec" Type="smallint" />
+          <Property Name="PIS" Type="varchar" MaxLength="15" />
+          <Property Name="CDCBO" Type="varchar" MaxLength="6" />
+          <Property Name="RGOrgao" Type="varchar" MaxLength="30" />
+          <Property Name="RGUF" Type="varchar" MaxLength="2" />
+          <Property Name="EhAssessoriaCob" Type="bit" />
+          <Property Name="EhProfissional" Type="bit" />
+          <Property Name="CDClassifica" Type="smallint" />
+          <Property Name="Habilitacao" Type="varchar" MaxLength="40" />
+          <Property Name="Apelido" Type="varchar" MaxLength="15" />
+          <Property Name="TitProf" Type="varchar" MaxLength="40" />
+          <Property Name="CargaHora" Type="smallint" />
+          <Property Name="CDOperadorAlt" Type="smallint" />
+          <Property Name="DtaAlt" Type="datetime" />
+          <Property Name="ModCad" Type="char" MaxLength="1" />
+          <Property Name="ModAlt" Type="char" MaxLength="1" />
+          <Property Name="ChvValReg" Type="varchar" MaxLength="200" />
+          <Property Name="IncPz" Type="bit" Nullable="false" />
+          <Property Name="EhEtrg" Type="bit" />
+          <Property Name="EtrgNatu" Type="varchar" MaxLength="60" />
+          <Property Name="CnvOdt" Type="bit" />
+          <Property Name="NMRefPes" Type="varchar" MaxLength="50" />
+          <Property Name="FoneRefPes" Type="varchar" MaxLength="15" />
+          <Property Name="NMRefCom" Type="varchar" MaxLength="50" />
+          <Property Name="FoneRefCom" Type="varchar" MaxLength="15" />
+          <Property Name="InscrEstSubst" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="UnidServ">
+          <Key>
+            <PropertyRef Name="CDUnidServ" />
+          </Key>
+          <Property Name="CDUnidServ" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="NMUnidServ" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="IdZeus" Type="varchar" MaxLength="10" />
+          <Property Name="Entd" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Mtrz" Type="bit" Nullable="false" />
+          <Property Name="MultUnd" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Pessoa_Pessoa">
+          <End Role="Pessoa" Type="PEModel.Store.Pessoa" Multiplicity="0..1" />
+          <End Role="Pessoa1" Type="PEModel.Store.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="CDPessoa" />
+            </Principal>
+            <Dependent Role="Pessoa1">
+              <PropertyRef Name="CDEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_Pessoa_Titular">
+          <End Role="Pessoa" Type="PEModel.Store.Pessoa" Multiplicity="0..1" />
+          <End Role="Pessoa1" Type="PEModel.Store.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="CDPessoa" />
+            </Principal>
+            <Dependent Role="Pessoa1">
+              <PropertyRef Name="CDTitular" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_UnidServ">
+          <End Role="UnidServ" Type="PEModel.Store.UnidServ" Multiplicity="1" />
+          <End Role="Pessoa" Type="PEModel.Store.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidServ">
+              <PropertyRef Name="CDUnidServ" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="CDUnidServ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PEModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PEEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Pessoa" EntityType="PEModel.Pessoa" />
+          <EntitySet Name="UnidServ" EntityType="PEModel.UnidServ" />
+          <AssociationSet Name="FK_Pessoa_Pessoa" Association="PEModel.FK_Pessoa_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Pessoa1" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_Pessoa_Titular" Association="PEModel.FK_Pessoa_Pessoa_Titular">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Pessoa1" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_UnidServ" Association="PEModel.FK_Pessoa_UnidServ">
+            <End Role="UnidServ" EntitySet="UnidServ" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="CDPessoa" />
+          </Key>
+          <Property Name="CDPessoa" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="CDUnidServ" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="DataCad" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="NMPessoa" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NomeFant" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Endereco" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Bairro" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Cidade" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="UF" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Cep" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="CDNivel" Type="Int16" />
+          <Property Name="CDOperador" Type="Int16" />
+          <Property Name="Sexo" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DataNasc" Type="DateTime" Precision="3" />
+          <Property Name="Cargo" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Salario" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CartTrab" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="SerieCTPS" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="UFCTPS" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="CidadeNasc" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="UFNasc" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="PaisNasc" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="CDGrauDep" Type="Int16" />
+          <Property Name="CDEstCivil" Type="Int16" />
+          <Property Name="CPFCNPJ" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
+          <Property Name="RG" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="NomePai" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NomeMae" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NomeResp" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CargoResp" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="NomeContato" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FoneRes" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="FoneCel" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="FoneCom" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="FoneCnt" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="FoneFax" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Sesi" Type="Boolean" />
+          <Property Name="NumRegPrf" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DataAdm" Type="DateTime" Precision="3" />
+          <Property Name="DataDem" Type="DateTime" Precision="3" />
+          <Property Name="TipoHor" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="CDTitular" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="Situacao" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="CDEmpresa" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="InscrEst" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="InscrMunic" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CaixaPostal" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="CDCnae" Type="String" MaxLength="7" Unicode="false" FixedLength="false" />
+          <Property Name="CDCategoria" Type="Int16" />
+          <Property Name="TpRecolhim" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="NumFunc" Type="Int16" />
+          <Property Name="CEI" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="CDGrauEsc" Type="Int16" />
+          <Property Name="CursoFormacao" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Obs" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <Property Name="EhCliente" Type="Boolean" />
+          <Property Name="EhEmpresa" Type="Boolean" />
+          <Property Name="EhFornec" Type="Boolean" />
+          <Property Name="EhParceiro" Type="Boolean" />
+          <Property Name="EhColaborador" Type="Boolean" />
+          <Property Name="CDSitEspec" Type="Int16" />
+          <Property Name="PIS" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="CDCBO" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="RGOrgao" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="RGUF" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="EhAssessoriaCob" Type="Boolean" />
+          <Property Name="EhProfissional" Type="Boolean" />
+          <Property Name="CDClassifica" Type="Int16" />
+          <Property Name="Habilitacao" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Apelido" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="TitProf" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="CargaHora" Type="Int16" />
+          <Property Name="CDOperadorAlt" Type="Int16" />
+          <Property Name="DtaAlt" Type="DateTime" Precision="3" />
+          <Property Name="ModCad" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ModAlt" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ChvValReg" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="IncPz" Type="Boolean" Nullable="false" />
+          <Property Name="EhEtrg" Type="Boolean" />
+          <Property Name="EtrgNatu" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="CnvOdt" Type="Boolean" />
+          <Property Name="NMRefPes" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FoneRefPes" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="NMRefCom" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FoneRefCom" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="InscrEstSubst" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Pessoa1" Relationship="PEModel.FK_Pessoa_Pessoa" FromRole="Pessoa" ToRole="Pessoa1" />
+          <NavigationProperty Name="Pessoa2" Relationship="PEModel.FK_Pessoa_Pessoa" FromRole="Pessoa1" ToRole="Pessoa" />
+          <NavigationProperty Name="Pessoa11" Relationship="PEModel.FK_Pessoa_Pessoa_Titular" FromRole="Pessoa" ToRole="Pessoa1" />
+          <NavigationProperty Name="Pessoa3" Relationship="PEModel.FK_Pessoa_Pessoa_Titular" FromRole="Pessoa1" ToRole="Pessoa" />
+          <NavigationProperty Name="UnidServ" Relationship="PEModel.FK_Pessoa_UnidServ" FromRole="Pessoa" ToRole="UnidServ" />
+        </EntityType>
+        <EntityType Name="UnidServ">
+          <Key>
+            <PropertyRef Name="CDUnidServ" />
+          </Key>
+          <Property Name="CDUnidServ" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="NMUnidServ" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="IdZeus" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Entd" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Mtrz" Type="Boolean" Nullable="false" />
+          <Property Name="MultUnd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pessoa" Relationship="PEModel.FK_Pessoa_UnidServ" FromRole="UnidServ" ToRole="Pessoa" />
+        </EntityType>
+        <Association Name="FK_Pessoa_Pessoa">
+          <End Role="Pessoa" Type="PEModel.Pessoa" Multiplicity="0..1" />
+          <End Role="Pessoa1" Type="PEModel.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="CDPessoa" />
+            </Principal>
+            <Dependent Role="Pessoa1">
+              <PropertyRef Name="CDEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_Pessoa_Titular">
+          <End Role="Pessoa" Type="PEModel.Pessoa" Multiplicity="0..1" />
+          <End Role="Pessoa1" Type="PEModel.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="CDPessoa" />
+            </Principal>
+            <Dependent Role="Pessoa1">
+              <PropertyRef Name="CDTitular" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_UnidServ">
+          <End Role="UnidServ" Type="PEModel.UnidServ" Multiplicity="1" />
+          <End Role="Pessoa" Type="PEModel.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidServ">
+              <PropertyRef Name="CDUnidServ" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="CDUnidServ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PEModelStoreContainer" CdmEntityContainer="PEEntities">
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="PEModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="CDPessoa" ColumnName="CDPessoa" />
+                <ScalarProperty Name="CDUnidServ" ColumnName="CDUnidServ" />
+                <ScalarProperty Name="DataCad" ColumnName="DataCad" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="NMPessoa" ColumnName="NMPessoa" />
+                <ScalarProperty Name="NomeFant" ColumnName="NomeFant" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="Cep" ColumnName="Cep" />
+                <ScalarProperty Name="CDNivel" ColumnName="CDNivel" />
+                <ScalarProperty Name="CDOperador" ColumnName="CDOperador" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="DataNasc" ColumnName="DataNasc" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="CartTrab" ColumnName="CartTrab" />
+                <ScalarProperty Name="SerieCTPS" ColumnName="SerieCTPS" />
+                <ScalarProperty Name="UFCTPS" ColumnName="UFCTPS" />
+                <ScalarProperty Name="CidadeNasc" ColumnName="CidadeNasc" />
+                <ScalarProperty Name="UFNasc" ColumnName="UFNasc" />
+                <ScalarProperty Name="PaisNasc" ColumnName="PaisNasc" />
+                <ScalarProperty Name="CDGrauDep" ColumnName="CDGrauDep" />
+                <ScalarProperty Name="CDEstCivil" ColumnName="CDEstCivil" />
+                <ScalarProperty Name="CPFCNPJ" ColumnName="CPFCNPJ" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="NomePai" ColumnName="NomePai" />
+                <ScalarProperty Name="NomeMae" ColumnName="NomeMae" />
+                <ScalarProperty Name="NomeResp" ColumnName="NomeResp" />
+                <ScalarProperty Name="CargoResp" ColumnName="CargoResp" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NomeContato" ColumnName="NomeContato" />
+                <ScalarProperty Name="FoneRes" ColumnName="FoneRes" />
+                <ScalarProperty Name="FoneCel" ColumnName="FoneCel" />
+                <ScalarProperty Name="FoneCom" ColumnName="FoneCom" />
+                <ScalarProperty Name="FoneCnt" ColumnName="FoneCnt" />
+                <ScalarProperty Name="FoneFax" ColumnName="FoneFax" />
+                <ScalarProperty Name="Sesi" ColumnName="Sesi" />
+                <ScalarProperty Name="NumRegPrf" ColumnName="NumRegPrf" />
+                <ScalarProperty Name="DataAdm" ColumnName="DataAdm" />
+                <ScalarProperty Name="DataDem" ColumnName="DataDem" />
+                <ScalarProperty Name="TipoHor" ColumnName="TipoHor" />
+                <ScalarProperty Name="CDTitular" ColumnName="CDTitular" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+                <ScalarProperty Name="CDEmpresa" ColumnName="CDEmpresa" />
+                <ScalarProperty Name="InscrEst" ColumnName="InscrEst" />
+                <ScalarProperty Name="InscrMunic" ColumnName="InscrMunic" />
+                <ScalarProperty Name="CaixaPostal" ColumnName="CaixaPostal" />
+                <ScalarProperty Name="CDCnae" ColumnName="CDCnae" />
+                <ScalarProperty Name="CDCategoria" ColumnName="CDCategoria" />
+                <ScalarProperty Name="TpRecolhim" ColumnName="TpRecolhim" />
+                <ScalarProperty Name="NumFunc" ColumnName="NumFunc" />
+                <ScalarProperty Name="CEI" ColumnName="CEI" />
+                <ScalarProperty Name="CDGrauEsc" ColumnName="CDGrauEsc" />
+                <ScalarProperty Name="CursoFormacao" ColumnName="CursoFormacao" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="EhCliente" ColumnName="EhCliente" />
+                <ScalarProperty Name="EhEmpresa" ColumnName="EhEmpresa" />
+                <ScalarProperty Name="EhFornec" ColumnName="EhFornec" />
+                <ScalarProperty Name="EhParceiro" ColumnName="EhParceiro" />
+                <ScalarProperty Name="EhColaborador" ColumnName="EhColaborador" />
+                <ScalarProperty Name="CDSitEspec" ColumnName="CDSitEspec" />
+                <ScalarProperty Name="PIS" ColumnName="PIS" />
+                <ScalarProperty Name="CDCBO" ColumnName="CDCBO" />
+                <ScalarProperty Name="RGOrgao" ColumnName="RGOrgao" />
+                <ScalarProperty Name="RGUF" ColumnName="RGUF" />
+                <ScalarProperty Name="EhAssessoriaCob" ColumnName="EhAssessoriaCob" />
+                <ScalarProperty Name="EhProfissional" ColumnName="EhProfissional" />
+                <ScalarProperty Name="CDClassifica" ColumnName="CDClassifica" />
+                <ScalarProperty Name="Habilitacao" ColumnName="Habilitacao" />
+                <ScalarProperty Name="Apelido" ColumnName="Apelido" />
+                <ScalarProperty Name="TitProf" ColumnName="TitProf" />
+                <ScalarProperty Name="CargaHora" ColumnName="CargaHora" />
+                <ScalarProperty Name="CDOperadorAlt" ColumnName="CDOperadorAlt" />
+                <ScalarProperty Name="DtaAlt" ColumnName="DtaAlt" />
+                <ScalarProperty Name="ModCad" ColumnName="ModCad" />
+                <ScalarProperty Name="ModAlt" ColumnName="ModAlt" />
+                <ScalarProperty Name="ChvValReg" ColumnName="ChvValReg" />
+                <ScalarProperty Name="IncPz" ColumnName="IncPz" />
+                <ScalarProperty Name="EhEtrg" ColumnName="EhEtrg" />
+                <ScalarProperty Name="EtrgNatu" ColumnName="EtrgNatu" />
+                <ScalarProperty Name="CnvOdt" ColumnName="CnvOdt" />
+                <ScalarProperty Name="NMRefPes" ColumnName="NMRefPes" />
+                <ScalarProperty Name="FoneRefPes" ColumnName="FoneRefPes" />
+                <ScalarProperty Name="NMRefCom" ColumnName="NMRefCom" />
+                <ScalarProperty Name="FoneRefCom" ColumnName="FoneRefCom" />
+                <ScalarProperty Name="InscrEstSubst" ColumnName="InscrEstSubst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidServ">
+            <EntityTypeMapping TypeName="PEModel.UnidServ">
+              <MappingFragment StoreEntitySet="UnidServ">
+                <ScalarProperty Name="CDUnidServ" ColumnName="CDUnidServ" />
+                <ScalarProperty Name="NMUnidServ" ColumnName="NMUnidServ" />
+                <ScalarProperty Name="IdZeus" ColumnName="IdZeus" />
+                <ScalarProperty Name="Entd" ColumnName="Entd" />
+                <ScalarProperty Name="Mtrz" ColumnName="Mtrz" />
+                <ScalarProperty Name="MultUnd" ColumnName="MultUnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
