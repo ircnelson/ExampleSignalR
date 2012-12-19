@@ -12,6 +12,9 @@ namespace ExampleSignalR
                     "~/Scripts/highcharts/highcharts.js",
                     "~/Scripts/highcharts/modules/exporting.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                    "~/Scripts/knockout-2.2.0.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/json").Include(
                     "~/Scripts/json2.js"));
 

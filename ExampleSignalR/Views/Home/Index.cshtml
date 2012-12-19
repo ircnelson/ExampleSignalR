@@ -7,16 +7,30 @@
 {
     @Scripts.Render("~/bundles/signalr")
     <script type="text/javascript" src="~/signalr/hubs"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/senhas-hub.js")"></script>
     <script type="text/javascript">
         $(function () {
-            var hub = $.connection.highchartsHub;
+
+            var guiche = new SenhasHub.Cliente();
+
+            $.connection.hub.start(function () {
+                guiche.init();
+            });
+
+            ko.applyBindings(guiche);
         });
     </script>
 }
 
-<h2>Index</h2>
+<h2>Guichê</h2>
 
-<button id="testehub">Hello SignalR!</button>
-
-
-<div id="signalr-result"></div>
+<div class="row">
+    <div class="span2">
+        <p>Senha atual: <strong><span data-bind="text: senhaAtual"></span></strong></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span5">
+        <button class="btn btn-primary" data-bind="click: proximaSenha">Próxima senha</button>
+    </div>
+</div>
