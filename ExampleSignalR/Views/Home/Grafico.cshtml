@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Grafico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grafico</h2>
+
+<div id="charts-container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/highcharts")
+    <script type="text/javascript">
+        var chart;
+        $(function () {
+
+            var dataChart = @(new HtmlString(Json.Encode(ViewBag.Chart)));
+
+            var categorias = $.map(dataChart, function(item) {
+                return item.Item1;
+            });
+
+            var defaultOptions = {
+                chart: {
+                    renderTo: 'charts-container',
+                    type: 'line',
+                    marginRight: 130,
+                    marginBottom: 25
+                },
+                title: {
+                    text: 'Gráfico',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: 'Connect Informática',
+                    x: -20
+                },
+                xAxis: {
+                    categories: categorias
+                },
+                yAxis: {
+                    title: {
+                        text: 'Quantidade'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.x + ': ' + this.y;
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 100,
+                    borderWidth: 0
+                },
+                series: []
+            };
+
+            chart = new Highcharts.Chart(defaultOptions);
+        });
+    </script>
+}

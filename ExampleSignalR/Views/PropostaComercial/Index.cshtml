@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="span2 pull-left">
+    <input type="text" class="span1" data-bind="value: numeroProposta" />
+</div>
+<div class="span10">
+    <button class="btn btn-primary" data-bind="click: salvarProposta">Salvar Proposta</button>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/signalr")
+    <script type="text/javascript" src="~/signalr/hubs"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/monitorar-propostas.js")"></script>
+    <script type="text/javascript">
+        $(function() {
+            var monitor = new window.Monitor.Server();
+
+            $.connection.hub.start();
+
+            ko.applyBindings(monitor);
+        });
+    </script>
+}
