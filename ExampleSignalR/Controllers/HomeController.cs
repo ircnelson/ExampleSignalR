@@ -18,6 +18,57 @@ namespace ExampleSignalR.Controllers
             return View();
         }
 
+        public JsonResult GraficoUnidadePessoa()
+        {
+            using (var db = new PEEntities())
+            {
+                var query = (from p in db.Pessoa
+                             join u in db.UnidServ on p.CDUnidServ equals u.CDUnidServ
+                             where p.DataCad.Year >= 2007
+                             group p by new
+                                            {
+                                                Ano = p.DataCad.Year,
+                                                Unidade = u.NMUnidServ
+                                            }
+                             into g
+                             orderby new
+                                         {
+                                             g.Key.Ano,
+                                             g.Key.Unidade
+                                         }
+                             select new
+                                        {
+                                            Ano = g.Key.Ano,
+                                            Unidade = g.Key.Unidade,
+                                            QuantidadePessoa = g.Count()
+                                        }).AsNoTracking().ToList();
+
+                var chart = new HighchartsRender<int, int>();
+
+                foreach (var row in query)
+                {
+                    if (!chart.categories.Any(a => a == row.Ano))
+                        chart.categories.Add(row.Ano);
+
+                    if (!chart.series.Any(e => e.Key == row.Unidade))
+                        chart.series.Add(row.Unidade, new List<int>());
+
+                    var indice = chart.categories.IndexOf(row.Ano);
+                    var serie = chart.series[row.Unidade];
+                    try
+                    {
+                        serie.Insert(indice, row.QuantidadePessoa);
+                    } catch(ArgumentOutOfRangeException)
+                    {
+                        serie.Insert(indice - 1, 0);
+                        serie.Insert(indice, row.QuantidadePessoa);
+                    }
+                }
+
+                return Json(chart);
+            }
+        }
+
         public JsonResult GraficoProposta()
         {
             using (var contexto = new GenesisEntities())

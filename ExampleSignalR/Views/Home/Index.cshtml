@@ -4,90 +4,114 @@
 }
 
 <div id="chart-container"></div>
+<div id="chart-container-2"></div>
 
 @section scripts
 {
     @Scripts.Render("~/bundles/highcharts")
     <script type="text/javascript">
-        var chart;
         $(function () {
+
+            //HighchartsCustom.create({
+            //    title: {
+            //        text: 'Gráfico - Proposta Comercial'
+            //    },
+                
+            //    xAxis: {
+            //        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+            //    },
+                
+            //    yAxis: {
+            //        title: {
+            //            text: 'Quantidade'
+            //        },
+            //        plotLines: [{
+            //            value: 0,
+            //            width: 1,
+            //            color: '#808080'
+            //        }]
+            //    },
+
+            //    plotOptions: {
+            //        line: {
+            //            dataLabels: {
+            //                enabled: true
+            //            },
+            //            enableMouseTracking: false
+            //        }
+            //    }
+            //}, 'Home/GraficoProposta');
             
-            var carregarGrafico = function () {
-                $.ajax({
-                    url: '/Home/GraficoProposta',
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function (data) {
-                        $.map(data, function (item) {
-                            chart.addSeries(item);
-                        });
-                    }
-                });
-            };
-
-            chart = new Highcharts.Chart({
+            HighchartsCustom.create({
                 chart: {
-                    renderTo: 'chart-container',
-                    type: 'line'
+                    renderTo: 'chart-container-2',
+                    type: 'column'
                 },
                 
-                lang: {
-                    loading: 'Carregando...'
-                },
-
-                xAxis: {
-                    categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
-                },
-                
-                yAxis: {
+                yAxis: [{
                     title: {
                         text: 'Quantidade'
                     },
-                    plotLines: [{
-                        value: 0,
-                        width: 1,
-                        color: '#808080'
-                    }]
-                },
+                    
+                    stackLabels: {
+                        enabled: true,
+                        style:
+                        {
+                            fontWeight: 'bold',
+                            color:
+                            (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                        }
+                    }
+                }, {
+                    title: {
+                        text: 'Total'
+                    },
 
+                    opposite: true
+                }],
+                
                 title: {
-                    text: 'Gráfico - Proposta Comercial'
-                },
-
-                tooltip: {
-                    formatter: function () {
-                        return '<b>' + this.series.name + '</b><br/>' +
-                            this.x + ': ' + this.y;
-                    }
-                },
-
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'top',
-                    x: -10,
-                    y: 100,
-                    borderWidth: 0
-                },
-
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: false
-                    }
+                    text: 'Gráfico - Quantidade de Pessoas cadastradas por Unidade'
                 },
                 
-                series: []
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: false,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                        }
+                    }
+                }
+            }, 'Home/GraficoUnidadePessoa', function (chart, data) {
+                               
+                chart.xAxis[0].setCategories(data.categories);
+                
+                var somaPorUnidade = [], somaTodasUnidades = [];
+
+                $.each(data.categories, function (i) {
+                    var t = 0;
+                    $.each(data.series, function (item, serieData) {
+                        t += serieData[i];
+                    });
+
+                    somaPorUnidade.push(t);
+                });
+
+                for (var i = 0; i < somaPorUnidade.length; i++) {
+                    var t = somaTodasUnidades[somaTodasUnidades.length - 1] || 0;
+                    somaTodasUnidades.push(t + somaPorUnidade[i]);
+                }
+
+                chart.addSeries({ name: 'TOTAL POR UNIDADE', type: 'spline', data: somaPorUnidade, yAxis: 0 });
+                chart.addSeries({ name: 'TOTAL ACUMULADO', type: 'line', data: somaTodasUnidades, yAxis: 0 });
+
+                $.map(data.series, function(data, name) {
+                    chart.addSeries({ name: name, data: data, type: 'column', yAxis: 0 });
+                });
+
             });
 
-            $.when(chart, carregarGrafico()).then(function () {
-                chart.showLoading();
-            }).done(function () {
-                chart.hideLoading();
-            });
-            
         });
     </script>
 }

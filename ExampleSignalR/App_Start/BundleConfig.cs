@@ -10,7 +10,8 @@ namespace ExampleSignalR
         {
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
                     "~/Scripts/highcharts/highcharts.js",
-                    "~/Scripts/highcharts/modules/exporting.js"));
+                    "~/Scripts/highcharts/modules/exporting.js",
+                    "~/Scripts/highcharts/highcharts-custom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/json").Include(
                     "~/Scripts/json2.js"));
