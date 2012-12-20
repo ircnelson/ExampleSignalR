@@ -7,7 +7,7 @@ namespace ExampleSignalR.Highcharts
 {
     public class HighchartsBasic<T>
     {
-        public string Name { get; set; }
-        public virtual IList<T> Data { get; set; }
+        public string name { get; set; }
+        public virtual IList<T> data { get; set; }
     }
 }

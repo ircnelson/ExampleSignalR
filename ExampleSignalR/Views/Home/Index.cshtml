@@ -3,20 +3,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div id="chart-container"></div>
+
 @section scripts
 {
-    @Scripts.Render("~/bundles/signalr")
-    <script type="text/javascript" src="~/signalr/hubs"></script>
+    @Scripts.Render("~/bundles/highcharts")
     <script type="text/javascript">
+        var chart;
         $(function () {
-            var hub = $.connection.highchartsHub;
+            
+            var carregarGrafico = function () {
+                $.ajax({
+                    url: '/Home/GraficoProposta',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                        $.map(data, function (item) {
+                            chart.addSeries(item);
+                        });
+                    }
+                });
+            };
+
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chart-container',
+                    type: 'line'
+                },
+                
+                lang: {
+                    loading: 'Carregando...'
+                },
+
+                xAxis: {
+                    categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+                },
+                
+                yAxis: {
+                    title: {
+                        text: 'Quantidade'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+
+                title: {
+                    text: 'Gráfico - Proposta Comercial'
+                },
+
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.x + ': ' + this.y;
+                    }
+                },
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 100,
+                    borderWidth: 0
+                },
+
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                
+                series: []
+            });
+
+            $.when(chart, carregarGrafico()).then(function () {
+                chart.showLoading();
+            }).done(function () {
+                chart.hideLoading();
+            });
+            
         });
     </script>
 }
-
-<h2>Index</h2>
-
-<button id="testehub">Hello SignalR!</button>
-
-
-<div id="signalr-result"></div>
