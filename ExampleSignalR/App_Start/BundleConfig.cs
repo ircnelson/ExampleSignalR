@@ -12,6 +12,9 @@ namespace ExampleSignalR
                     "~/Scripts/highcharts/highcharts.js",
                     "~/Scripts/highcharts/modules/exporting.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/autosuggest").Include(
+                    "~/Scripts/jquery.autosuggest.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                     "~/Scripts/knockout-2.2.0.js"));
 
@@ -39,12 +42,15 @@ namespace ExampleSignalR
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+            bundles.Add(new StyleBundle("~/css/bootstrap").Include(
                         "~/Content/bootstrap.css", 
                         "~/Content/bootstrap-responsive.css",
                         "~/Content/bootstrap-custom.css"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+            bundles.Add(new StyleBundle("~/css/autosuggest").Include(
+                        "~/Content/autoSuggest.css"));
+
+            bundles.Add(new StyleBundle("~/css/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
                         "~/Content/themes/base/jquery.ui.selectable.css",

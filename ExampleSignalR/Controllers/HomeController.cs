@@ -14,5 +14,10 @@ namespace ExampleSignalR.Controllers
         {
             return View();
         }
+
+        public ActionResult Autocomplete()
+        {
+            return View();
+        }
     }
 }
