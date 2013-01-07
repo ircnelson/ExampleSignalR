@@ -190,6 +190,7 @@
 								n_data[opts.selectedItemProp] = i_input;
 								n_data[opts.selectedValuesProp] = i_input;																				
 								var lis = $("li", selections_holder).length;
+
 								add_selected_item(n_data, "00"+(lis+1));
 								input.val("");
 							}
@@ -324,7 +325,10 @@
 				}
 				
 				function add_selected_item(data, num){
-					values_input.val(values_input.val()+data[opts.selectedValuesProp]+",");
+				    values_input.val(values_input.val() + data[opts.selectedValuesProp] + ",");
+
+				    console.log(values_input);
+				    
 					var item = $('<li class="as-selection-item" id="as-selection-'+num+'"></li>').click(function(){
 							opts.selectionClick.call(this, $(this));
 							selections_holder.children().removeClass("selected");

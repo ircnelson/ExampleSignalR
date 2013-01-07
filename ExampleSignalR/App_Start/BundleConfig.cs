@@ -8,6 +8,8 @@ namespace ExampleSignalR
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Clear();
+
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
                     "~/Scripts/highcharts/highcharts.js",
                     "~/Scripts/highcharts/modules/exporting.js"));
@@ -28,10 +30,12 @@ namespace ExampleSignalR
                         "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/ jquery.tmpl.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+                        "~/Scripts/jquery-ui-{version}.js",
+                        "~/Scripts/jquery-ui-1.9.2.custom.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
@@ -49,6 +53,9 @@ namespace ExampleSignalR
 
             bundles.Add(new StyleBundle("~/css/autosuggest").Include(
                         "~/Content/autoSuggest.css"));
+
+            bundles.Add(new StyleBundle("~/css/themes/bootstrap/css").Include(
+                        "~/Content/themes/bootstrap/jquery-ui-1.9.2.custom.css"));
 
             bundles.Add(new StyleBundle("~/css/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

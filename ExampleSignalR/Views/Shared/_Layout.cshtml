@@ -4,9 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/themes/bootstrap/css")
     @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/autosuggest")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
+
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.9.2.ie.css"/>
+    <![endif]-->
+
+    <script type="text/javascript">
+        window.appUrl = '@Url.Content("~/")';
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,10 +41,11 @@
     <div class="container">
         @RenderBody()
     </div>
-    
+
     @Scripts.Render("~/bundles/json")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/knockout")
 
     @RenderSection("scripts", required: false)

@@ -26,5 +26,7 @@ namespace ExampleSignalR.Contexto.EF
         }
     
         public DbSet<tbPropostaComercial> tbPropostaComercial { get; set; }
+        public DbSet<tbServico> tbServico { get; set; }
+        public DbSet<vwServicoClassificado> vwServicoClassificado { get; set; }
     }
 }

@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="adae18eb81c245839ae964de79eff7fa" Name="Diagram1" ZoomLevel="56">
         <EntityTypeShape EntityType="GenesisModel.tbPropostaComercial" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GenesisModel.tbServico" Width="1.5" PointX="3.0654260027527" PointY="30.051625012444159" />
+        <EntityTypeShape EntityType="GenesisModel.vwServicoClassificado" Width="1.5" PointX="3.0981771829995219" PointY="18.722807922737118" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

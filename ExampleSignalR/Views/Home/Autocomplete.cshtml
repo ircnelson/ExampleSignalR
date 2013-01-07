@@ -3,14 +3,79 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="span12">
+    <div class="input-append">
+        <input class="span8" id="servico" type="text">
+        <button class="btn" id="adicionarServico" type="button">+</button>
+    </div>
+</div>
 
+<table id="tabelaServicos" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="span2">Código</th>
+            <th>Serviço</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
-@section styles
-{
-    @Styles.Render("~/css/autosuggest")
-}
+<script id="testeTmpl" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${CodigoInterno}</td>
+        <td>${Servico}</td>
+    </tr>
+</script>
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/autosuggest")
+    <script type="text/javascript">
+
+        function formatarServico(item) {
+            if (item.Tipo == 1)
+                return "<strong>" + item.CodigoInterno + " - " + item.Servico + "</strong>";
+
+            return item.CodigoInterno + " - " + item.Servico;
+        }
+
+        $(function() {
+
+            var cache = { };
+
+            $("#adicionarServico").click(function () {
+                $.getJSON(window.appUrl + 'Home/AdicionarServico', { idServico: $("#servico").data('idServico') }, function (response) {
+                    $("#testeTmpl").tmpl(response).append("#tabelaServicos");
+                });
+            });
+
+            $("#servico").autocomplete({
+                minLength: 4,
+
+                select: function(event, ui) {
+                    $("#servico").val(ui.item.CodigoInterno + " - " + ui.item.Servico);
+                    $("#servico").data('idServico', ui.item.CodigoInterno);
+                    return false;
+                },
+
+                source: function(request, response) {
+                    var term = request.term;
+                    if (term in cache) {
+                        response(cache[term]);
+                        return;
+                    }
+
+                    $.getJSON(window.appUrl + 'Home/PesquisaServicos', request, function(data, status, xhr) {
+                        cache[term] = data;
+                        response(data);
+                    });
+                }
+            }).data("autocomplete")._renderItem = function(ul, item) {
+                return $("<li>")
+                    .data("item.autocomplete", item)
+                    .append("<a>" + formatarServico(item) + "</a>")
+                    .appendTo(ul);
+            };
+        });
+    </script>
 }

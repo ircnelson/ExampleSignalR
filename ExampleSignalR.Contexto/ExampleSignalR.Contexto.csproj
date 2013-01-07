@@ -81,8 +81,14 @@
     <Compile Include="EF\tbPropostaComercial.cs">
       <DependentUpon>Genesis.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\tbServico.cs">
+      <DependentUpon>Genesis.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\UnidServ.cs">
       <DependentUpon>PE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vwServicoClassificado.cs">
+      <DependentUpon>Genesis.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

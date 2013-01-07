@@ -4,9 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GenesisModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GenesisModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="GenesisModelStoreContainer">
           <EntitySet Name="tbPropostaComercial" EntityType="GenesisModel.Store.tbPropostaComercial" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbServico" EntityType="GenesisModel.Store.tbServico" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vwServicoClassificado" EntityType="GenesisModel.Store.vwServicoClassificado" store:Type="Views" store:Schema="dbo" store:Name="vwServicoClassificado">
+            <DefiningQuery>SELECT 
+      [vwServicoClassificado].[ID] AS [ID], 
+      [vwServicoClassificado].[NomeServico] AS [NomeServico], 
+      [vwServicoClassificado].[CodigoInterno] AS [CodigoInterno], 
+      [vwServicoClassificado].[CodigoInteiro] AS [CodigoInteiro], 
+      [vwServicoClassificado].[Nivel] AS [Nivel], 
+      [vwServicoClassificado].[UltimoNivel] AS [UltimoNivel], 
+      [vwServicoClassificado].[UltimoNivelInteiro] AS [UltimoNivelInteiro], 
+      [vwServicoClassificado].[Pai] AS [Pai], 
+      [vwServicoClassificado].[PaiInteiro] AS [PaiInteiro], 
+      [vwServicoClassificado].[IDTipo] AS [IDTipo], 
+      [vwServicoClassificado].[IDTipoPreco] AS [IDTipoPreco]
+      FROM [dbo].[vwServicoClassificado] AS [vwServicoClassificado]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
         <EntityType Name="tbPropostaComercial">
           <Key>
@@ -61,13 +77,56 @@
           <Property Name="IDTipoDocumentoFaturamento" Type="bigint" />
           <Property Name="IDSistemaOrigem" Type="smallint" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityType Name="tbServico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoInterno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="NMServico" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IDArea" Type="bigint" Nullable="false" />
+          <Property Name="IDTipo" Type="int" Nullable="false" />
+          <Property Name="IDTipoPreco" Type="int" Nullable="false" />
+          <Property Name="IDModeloContrato" Type="int" />
+          <Property Name="IDModeloPropostaTecnica" Type="int" />
+          <Property Name="DescricaoDetalhada" Type="varchar" MaxLength="500" />
+          <Property Name="PermiteAtendimento" Type="bit" />
+          <Property Name="Descricao" Type="varchar" MaxLength="1000" />
+          <Property Name="InformarFuncionariosAmostra" Type="bit" />
+          <Property Name="tagResposavelTecnico" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BDGenesis2011_Des.dbo.vwServicoClassificado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwServicoClassificado">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NomeServico" />
+            <PropertyRef Name="CodigoInterno" />
+            <PropertyRef Name="IDTipo" />
+            <PropertyRef Name="IDTipoPreco" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NomeServico" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CodigoInterno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CodigoInteiro" Type="bigint" />
+          <Property Name="Nivel" Type="int" />
+          <Property Name="UltimoNivel" Type="varchar" MaxLength="50" />
+          <Property Name="UltimoNivelInteiro" Type="bigint" />
+          <Property Name="Pai" Type="varchar" MaxLength="50" />
+          <Property Name="PaiInteiro" Type="bigint" />
+          <Property Name="IDTipo" Type="int" Nullable="false" />
+          <Property Name="IDTipoPreco" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GenesisModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="GenesisEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="tbPropostaComercial" EntityType="GenesisModel.tbPropostaComercial" />
+          <EntitySet Name="tbServico" EntityType="GenesisModel.tbServico" />
+          <EntitySet Name="vwServicoClassificado" EntityType="GenesisModel.vwServicoClassificado" />
         </EntityContainer>
         <EntityType Name="tbPropostaComercial">
           <Key>
@@ -121,6 +180,45 @@
           <Property Name="IDTipoDocumentoCobranca" Type="Int64" />
           <Property Name="IDTipoDocumentoFaturamento" Type="Int64" />
           <Property Name="IDSistemaOrigem" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbServico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CodigoInterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Codigo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NMServico" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IDArea" Nullable="false" />
+          <Property Type="Int32" Name="IDTipo" Nullable="false" />
+          <Property Type="Int32" Name="IDTipoPreco" Nullable="false" />
+          <Property Type="Int32" Name="IDModeloContrato" />
+          <Property Type="Int32" Name="IDModeloPropostaTecnica" />
+          <Property Type="String" Name="DescricaoDetalhada" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="PermiteAtendimento" />
+          <Property Type="String" Name="Descricao" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="InformarFuncionariosAmostra" />
+          <Property Type="Boolean" Name="tagResposavelTecnico" />
+        </EntityType>
+        <EntityType Name="vwServicoClassificado">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NomeServico" />
+            <PropertyRef Name="CodigoInterno" />
+            <PropertyRef Name="IDTipo" />
+            <PropertyRef Name="IDTipoPreco" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NomeServico" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodigoInterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="CodigoInteiro" />
+          <Property Type="Int32" Name="Nivel" />
+          <Property Type="String" Name="UltimoNivel" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="UltimoNivelInteiro" />
+          <Property Type="String" Name="Pai" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="PaiInteiro" />
+          <Property Type="Int32" Name="IDTipo" Nullable="false" />
+          <Property Type="Int32" Name="IDTipoPreco" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -179,6 +277,43 @@
                 <ScalarProperty Name="IDTipoDocumentoCobranca" ColumnName="IDTipoDocumentoCobranca" />
                 <ScalarProperty Name="IDTipoDocumentoFaturamento" ColumnName="IDTipoDocumentoFaturamento" />
                 <ScalarProperty Name="IDSistemaOrigem" ColumnName="IDSistemaOrigem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbServico">
+            <EntityTypeMapping TypeName="GenesisModel.tbServico">
+              <MappingFragment StoreEntitySet="tbServico">
+                <ScalarProperty Name="tagResposavelTecnico" ColumnName="tagResposavelTecnico" />
+                <ScalarProperty Name="InformarFuncionariosAmostra" ColumnName="InformarFuncionariosAmostra" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="PermiteAtendimento" ColumnName="PermiteAtendimento" />
+                <ScalarProperty Name="DescricaoDetalhada" ColumnName="DescricaoDetalhada" />
+                <ScalarProperty Name="IDModeloPropostaTecnica" ColumnName="IDModeloPropostaTecnica" />
+                <ScalarProperty Name="IDModeloContrato" ColumnName="IDModeloContrato" />
+                <ScalarProperty Name="IDTipoPreco" ColumnName="IDTipoPreco" />
+                <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="NMServico" ColumnName="NMServico" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwServicoClassificado">
+            <EntityTypeMapping TypeName="GenesisModel.vwServicoClassificado">
+              <MappingFragment StoreEntitySet="vwServicoClassificado">
+                <ScalarProperty Name="IDTipoPreco" ColumnName="IDTipoPreco" />
+                <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+                <ScalarProperty Name="PaiInteiro" ColumnName="PaiInteiro" />
+                <ScalarProperty Name="Pai" ColumnName="Pai" />
+                <ScalarProperty Name="UltimoNivelInteiro" ColumnName="UltimoNivelInteiro" />
+                <ScalarProperty Name="UltimoNivel" ColumnName="UltimoNivel" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="CodigoInteiro" ColumnName="CodigoInteiro" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
+                <ScalarProperty Name="NomeServico" ColumnName="NomeServico" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
