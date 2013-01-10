@@ -23,6 +23,13 @@
       [vwServicoClassificado].[IDTipoPreco] AS [IDTipoPreco]
       FROM [dbo].[vwServicoClassificado] AS [vwServicoClassificado]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwServicoLinear" EntityType="GenesisModel.Store.vwServicoLinear" store:Type="Views" store:Schema="dbo" store:Name="vwServicoLinear">
+            <DefiningQuery>SELECT 
+      [vwServicoLinear].[ID] AS [ID], 
+      [vwServicoLinear].[CodigoInterno] AS [CodigoInterno], 
+      [vwServicoLinear].[Descricao] AS [Descricao]
+      FROM [dbo].[vwServicoLinear] AS [vwServicoLinear]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
         <EntityType Name="tbPropostaComercial">
           <Key>
@@ -84,7 +91,7 @@
           <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CodigoInterno" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Codigo" Type="varchar" MaxLength="50" />
-          <Property Name="NMServico" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="NMServico" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="IDArea" Type="bigint" Nullable="false" />
           <Property Name="IDTipo" Type="int" Nullable="false" />
           <Property Name="IDTipoPreco" Type="int" Nullable="false" />
@@ -119,6 +126,19 @@
           <Property Name="IDTipo" Type="int" Nullable="false" />
           <Property Name="IDTipoPreco" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BDGenesis2011_Des.dbo.vwServicoLinear' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwServicoLinear">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CodigoInterno" />
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="CodigoInterno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="306" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -127,6 +147,7 @@
           <EntitySet Name="tbPropostaComercial" EntityType="GenesisModel.tbPropostaComercial" />
           <EntitySet Name="tbServico" EntityType="GenesisModel.tbServico" />
           <EntitySet Name="vwServicoClassificado" EntityType="GenesisModel.vwServicoClassificado" />
+          <EntitySet Name="vwServicoLinear" EntityType="GenesisModel.vwServicoLinear" />
         </EntityContainer>
         <EntityType Name="tbPropostaComercial">
           <Key>
@@ -188,7 +209,7 @@
           <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="CodigoInterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Codigo" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="NMServico" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NMServico" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="IDArea" Nullable="false" />
           <Property Type="Int32" Name="IDTipo" Nullable="false" />
           <Property Type="Int32" Name="IDTipoPreco" Nullable="false" />
@@ -219,6 +240,16 @@
           <Property Type="Int64" Name="PaiInteiro" />
           <Property Type="Int32" Name="IDTipo" Nullable="false" />
           <Property Type="Int32" Name="IDTipoPreco" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwServicoLinear">
+          <Key>
+            <PropertyRef Name="CodigoInterno" />
+            <PropertyRef Name="Descricao" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="CodigoInterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="306" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ID" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -314,6 +345,15 @@
                 <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
                 <ScalarProperty Name="NomeServico" ColumnName="NomeServico" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwServicoLinear">
+            <EntityTypeMapping TypeName="GenesisModel.vwServicoLinear">
+              <MappingFragment StoreEntitySet="vwServicoLinear">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

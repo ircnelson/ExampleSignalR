@@ -10,6 +10,14 @@ namespace ExampleSignalR
         {
             bundles.Clear();
 
+            #region Javascripts
+
+            bundles.Add(new ScriptBundle("~/bundles/jasmine").Include(
+                    "~/Scripts/jasmine-1.3.1/jasmine.js",
+                    "~/Scripts/jasmine-1.3.1/jasmine-html.js",
+                    "~/Scripts/jasmine-jquery.js",
+                    "~/Scripts/mock-ajax.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
                     "~/Scripts/highcharts/highcharts.js",
                     "~/Scripts/highcharts/modules/exporting.js"));
@@ -31,7 +39,7 @@ namespace ExampleSignalR
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/ jquery.tmpl.min.js"));
+                        "~/Scripts/jquery.tmpl.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js",
@@ -41,8 +49,13 @@ namespace ExampleSignalR
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+            #endregion
+
+            #region Stylesheets
+
+            bundles.Add(new StyleBundle("~/css/jasmine").Include(
+                    "~/Scripts/jasmine-1.3.1/jasmine.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
@@ -70,6 +83,8 @@ namespace ExampleSignalR
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            #endregion
         }
     }
 }

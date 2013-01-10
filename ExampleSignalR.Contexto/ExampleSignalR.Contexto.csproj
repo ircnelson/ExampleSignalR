@@ -90,6 +90,9 @@
     <Compile Include="EF\vwServicoClassificado.cs">
       <DependentUpon>Genesis.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\vwServicoLinear.cs">
+      <DependentUpon>Genesis.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

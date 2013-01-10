@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="GenesisModel.tbPropostaComercial" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GenesisModel.tbServico" Width="1.5" PointX="3.0654260027527" PointY="30.051625012444159" />
         <EntityTypeShape EntityType="GenesisModel.vwServicoClassificado" Width="1.5" PointX="3.0981771829995219" PointY="18.722807922737118" />
+        <EntityTypeShape EntityType="GenesisModel.vwServicoLinear" Width="1.5" PointX="5.2055620240073477" PointY="6.1004784135615822" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,6 +7,7 @@
     <div class="input-append">
         <input class="span8" id="servico" type="text">
         <button class="btn" id="adicionarServico" type="button">+</button>
+        <button class="btn" id="limparServicos" type="button">Limpar</button>
     </div>
 </div>
 
@@ -44,9 +45,15 @@
             var cache = { };
 
             $("#adicionarServico").click(function () {
-                $.getJSON(window.appUrl + 'Home/AdicionarServico', { idServico: $("#servico").data('idServico') }, function (response) {
-                    $("#testeTmpl").tmpl(response).append("#tabelaServicos");
+                $("#servico").val('');
+                $.getJSON(window.appUrl + 'Home/AdicionarServico', { idServico: $("#servico").data('id') }, function (response) {
+                    $("#testeTmpl").tmpl(response).appendTo("#tabelaServicos");
                 });
+            });
+
+            $("#limparServicos").click(function() {
+                $("#testeTmpl").tmpl(null).appendTo("#tabelaServicos");
+                $("#tabelaServicos tbody").empty();
             });
 
             $("#servico").autocomplete({
@@ -54,7 +61,7 @@
 
                 select: function(event, ui) {
                     $("#servico").val(ui.item.CodigoInterno + " - " + ui.item.Servico);
-                    $("#servico").data('idServico', ui.item.CodigoInterno);
+                    $("#servico").data('id', ui.item.Id);
                     return false;
                 },
 

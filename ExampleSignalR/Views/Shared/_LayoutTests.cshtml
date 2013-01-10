@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/jasmine")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+    <script type="text/javascript">
+        window.appUrl = '@Url.Content("~/")';
+    </script>
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/json")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jasmine")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/knockout")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

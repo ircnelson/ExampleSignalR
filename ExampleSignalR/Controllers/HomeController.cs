@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ExampleSignalR.Autenticacao;
 using ExampleSignalR.Contexto.EF;
+using ExampleSignalR.Models;
 
 namespace ExampleSignalR.Controllers
 {
@@ -26,34 +27,41 @@ namespace ExampleSignalR.Controllers
         {
             using (var contexto = new GenesisEntities())
             {
-                var servicos = (from s in contexto.vwServicoClassificado
+                var query = (from s in contexto.vwServicoLinear
+                             where s.Descricao.Contains(term)
 
-                                //join s2 in contexto.vwServicoClassificado on s.Pai equals s2.CodigoInterno into joins2
-                                //from spai in joins2.DefaultIfEmpty()
+                             select new
+                                        {
+                                            Id = s.ID,
+                                            CodigoInterno = s.CodigoInterno,
+                                            Servico = s.Descricao
+                                        })
+                    .OrderBy(o => o.Servico)
+                    .AsNoTracking()
+                    .ToList();
 
-                                //join s3 in contexto.vwServicoClassificado on spai.Pai equals s3.CodigoInterno into
-                                //    joins3
-                                //from svo in joins3.DefaultIfEmpty()
-
-                                where s.NomeServico.Contains(term)
-
-                                select new
-                                           {
-                                               Tipo = s.IDTipo,
-                                               CodigoInterno = s.CodigoInterno,
-                                               Servico = s.NomeServico
-                                           })
-                                .OrderBy(o => o.CodigoInterno)
-                                .AsNoTracking()
-                                .ToList();
-
-                return Json(servicos, JsonRequestBehavior.AllowGet);
+                return Json(query, JsonRequestBehavior.AllowGet);
             }
         }
 
-        public ActionResult AdicionarServico()
+        public ActionResult AdicionarServico(long idServico)
         {
-            return Json(null, JsonRequestBehavior.AllowGet);
+            using (var contexto = new GenesisEntities())
+            {
+                var servico = contexto.vwServicoClassificado.SingleOrDefault(e => e.ID == idServico);
+                var codigoInterno = string.Format("{0}.", servico.Pai);
+                
+                var query = (from s in contexto.vwServicoClassificado
+                             where s.IDTipo == 2 && s.CodigoInterno.StartsWith(codigoInterno)
+                             select new
+                                        {
+                                            Id = s.ID,
+                                            CodigoInterno = s.CodigoInterno,
+                                            Servico = s.NomeServico
+                                        }).ToList();
+
+                return Json(query, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
